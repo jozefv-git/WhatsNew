@@ -1,0 +1,134 @@
+[versions]
+agp = "8.5.2"
+kotlin = "2.0.20"
+coreKtx = "1.15.0"
+espressoCore = "3.6.1"
+lifecycleRuntimeKtx = "2.8.7"
+activityCompose = "1.10.1"
+#Contains compatible compose versions for differen compose dependencies
+composeBom = "2025.03.00"
+koin = "4.0.2"
+kotlin-serialization-json = "1.6.3"
+kotlin-serialization = "2.0.20"
+navigation-compose = "2.8.9"
+coil-compose = "2.7.0"
+ktor = "2.3.12"
+encrypted-shared-prefs = "1.1.0-alpha06"
+splash-screen = "1.0.1"
+kotlin-parcelize = "1.8.10"
+materialIconsExtended = "1.7.8"
+room = "2.6.1"
+androidx-adaptive = "1.1.0"
+ksp = "2.0.20-1.0.25"
+junit5 = "5.12.0"
+junit5-plugin = "1.12.0.0"
+mockk = "1.13.17"
+assertk = "0.28.1"
+coroutines-test = "1.10.1"
+turbine = "1.2.0"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+#Koin
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+#Data serialization
+kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization-json" }
+#Navigation
+navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigation-compose" }
+#Coil
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
+#Ktor
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-engine-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-content-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
+#Encrypted shared preferences
+encrypted-shared-prefs = { module = "androidx.security:security-crypto-ktx", version.ref = "encrypted-shared-prefs" }
+#Splash screen
+splash-screen = { module = "androidx.core:core-splashscreen", version.ref = "splash-screen" }
+#Adaptive navigation
+androidx-adaptive = { module = "androidx.compose.material3.adaptive:adaptive", version.ref = "androidx-adaptive" }
+androidx-adaptive-layout = { module = "androidx.compose.material3.adaptive:adaptive-layout", version.ref = "androidx-adaptive" }
+androidx-adaptive-navigation = { module = "androidx.compose.material3.adaptive:adaptive-navigation", version.ref = "androidx-adaptive" }
+#Extended material icons
+androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended-android", version.ref = "materialIconsExtended" }
+#Room
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+#Testing
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit5" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit5" }
+junit-jupiter-parameterized = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit5" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+assertk = { module = "com.willowtreeapps.assertk:assertk", version.ref = "assertk" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines-test" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+ktor-client-test = {module = "io.ktor:ktor-client-mock",version.ref = "ktor"}
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+# For compose navigation
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-serialization" }
+# For the adaptive list layout
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin-parcelize" }
+#Room
+room = { id = "androidx.room", version.ref = "room" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+#Testing
+junit5 = { id = "de.mannodermaus.android-junit5", version.ref = "junit5-plugin" }
+[bundles]
+compose = [
+    "androidx-activity-compose",
+    "androidx-ui",
+    "androidx-ui-graphics",
+    "androidx-ui-tooling-preview",
+    "androidx-material3",
+    "androidx-compose-material-icons-extended",
+]
+ktor = [
+    "ktor-client-core",
+    "ktor-client-engine-cio",
+    "ktor-client-logging",
+    "ktor-client-content-negotiation",
+    "ktor-client-content-serialization-kotlinx-json",
+    "ktor-client-auth"
+]
+adaptive-layouts = [
+    "androidx-adaptive",
+    "androidx-adaptive-layout",
+    "androidx-adaptive-navigation"
+]
+koin = [
+    "koin-core",
+    "koin-compose"
+]
+room = [
+    "androidx-room-runtime",
+    # "androidx-room-compiler", needs to be declared as ksp
+    "androidx-room-ktx"
+]
+test = [
+    "junit-jupiter-api",
+    #Engine not included as it's need only during the runtime
+    "junit-jupiter-parameterized",
+    "mockk",
+    "assertk",
+    "coroutines-test",
+    "turbine"
+]
+
