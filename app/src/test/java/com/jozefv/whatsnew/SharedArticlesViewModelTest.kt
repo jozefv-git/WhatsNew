@@ -9,9 +9,8 @@ import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
-import com.jozefv.whatsnew.core.domain.ArticleDaoFake
 import com.jozefv.whatsnew.core.domain.SessionStorage
-import com.jozefv.whatsnew.core.domain.TestCoroutineDispatchers
+import com.jozefv.whatsnew.fakes.ArticleDaoFake
 import com.jozefv.whatsnew.feat_articles.data.remote.articles.ApiDefaults.BASE_URL
 import com.jozefv.whatsnew.feat_articles.data.remote.articles.ApiDefaults.DEFAULT_URL
 import com.jozefv.whatsnew.feat_articles.data.remote.articles.ApiDefaults.OPTIONAL_NEXT_PAGE_PARAM
@@ -31,6 +30,8 @@ import com.jozefv.whatsnew.stubs.ArticlesDataDtoStub
 import com.jozefv.whatsnew.stubs.FilterStorageStub
 import com.jozefv.whatsnew.stubs.SessionStorageStub
 import com.jozefv.whatsnew.stubs.SuggestionStorageStub
+import com.jozefv.whatsnew.util.TestCoroutineDispatchers
+import com.jozefv.whatsnew.util.TestKtorEngine
 import io.ktor.client.engine.mock.MockEngineConfig
 import io.ktor.client.engine.mock.respond
 import io.ktor.http.HttpStatusCode

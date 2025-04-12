@@ -1,10 +1,7 @@
-@file:OptIn(ExperimentalCoroutinesApi::class)
-
-package com.jozefv.whatsnew.core.domain
+package com.jozefv.whatsnew.util
 
 import com.jozefv.whatsnew.core.domain.util.CoroutineDispatchers
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestDispatcher
 

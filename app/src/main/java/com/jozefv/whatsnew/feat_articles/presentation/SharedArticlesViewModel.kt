@@ -364,19 +364,24 @@ class SharedArticlesViewModel(
 
     private suspend fun refreshArticles() {
         val query = state.searchState.query
+        // For better UI - show loading indicator always at least for 1s
+        val delay = viewModelScope.async(coroutineDispatchers.mainImmediate) { delay(1000) }
         val result = articlesRepository.getRefreshedArticles(
             isLoggedIn = state.isLoggedIn,
             allSelectedFilters = state.filterState.selectedFilters.map { it.toFilter() },
             query = query.ifBlank { null })
+        delay.await()
         when (result) {
             is ResultHandler.Success -> {
                 state = state.copy(
+                    error = null,
                     articles = result.data.map { it.toArticleUi() },
                     refreshedTime = getLocalTime()
                 )
             }
 
             is ResultHandler.Error -> {
+                state = state.copy(error = result.toUiText())
                 _channel.send(SharedArticlesEvent.ErrorEventShared(result.toUiText()))
             }
         }

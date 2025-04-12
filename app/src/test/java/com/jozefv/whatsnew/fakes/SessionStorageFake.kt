@@ -1,5 +1,6 @@
-package com.jozefv.whatsnew.core.domain
+package com.jozefv.whatsnew.fakes
 
+import com.jozefv.whatsnew.core.domain.SessionStorage
 import com.jozefv.whatsnew.core.domain.model.AuthUser
 import com.jozefv.whatsnew.core.domain.util.ErrorResult
 import com.jozefv.whatsnew.core.domain.util.JustError

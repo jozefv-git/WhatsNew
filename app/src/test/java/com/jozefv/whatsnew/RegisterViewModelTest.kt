@@ -10,14 +10,14 @@ import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
-import com.jozefv.whatsnew.core.domain.SessionStorageFake
-import com.jozefv.whatsnew.core.domain.TestCoroutineDispatchers
+import com.jozefv.whatsnew.fakes.SessionStorageFake
 import com.jozefv.whatsnew.feat_auth.data.PrefsAuthRepository
 import com.jozefv.whatsnew.feat_auth.domain.EmailPatternValidator
 import com.jozefv.whatsnew.feat_auth.domain.InputUserDataValidator
 import com.jozefv.whatsnew.feat_auth.presentation.register.RegisterAction
 import com.jozefv.whatsnew.feat_auth.presentation.register.RegisterEvent
 import com.jozefv.whatsnew.feat_auth.presentation.register.RegisterViewModel
+import com.jozefv.whatsnew.util.TestCoroutineDispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runCurrent

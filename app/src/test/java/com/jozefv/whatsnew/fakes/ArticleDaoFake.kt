@@ -1,4 +1,4 @@
-package com.jozefv.whatsnew.core.domain
+package com.jozefv.whatsnew.fakes
 
 import com.jozefv.whatsnew.feat_profile.data.database.ArticleDao
 import com.jozefv.whatsnew.feat_profile.data.database.ArticleEntities
