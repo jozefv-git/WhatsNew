@@ -26,6 +26,7 @@ import io.ktor.client.call.NoTransformationFoundException
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
+import io.ktor.util.network.UnresolvedAddressException
 import java.net.URLEncoder
 
 
@@ -63,7 +64,7 @@ class ArticlesRepositoryKtorImpl(
         }
         println("Actual GetArticles url:$url")
         return when (val response =
-            responseToResult<ArticleDataDto>(httpClient.get(url))) {
+            responseToResult<ArticleDataDto>(request = { httpClient.get(url) })) {
             is ResultHandler.Success -> {
                 val validResults = response.data.results?.filter { it.description != null }
                     ?: return ResultHandler.Error(ErrorResult.NetworkError.OTHER)
@@ -113,7 +114,8 @@ class ArticlesRepositoryKtorImpl(
         }
         println("Actual GetMoreArticles url:$url")
 
-        return when (val response = responseToResult<ArticleDataDto>(httpClient.get(url))) {
+        return when (val response =
+            responseToResult<ArticleDataDto>(request = { httpClient.get(url) })) {
             is ResultHandler.Success -> {
                 val validResults = response.data.results?.filter { it.description != null }
                     ?: return ResultHandler.Error(ErrorResult.NetworkError.OTHER)
@@ -158,7 +160,7 @@ class ArticlesRepositoryKtorImpl(
         println("Actual GetRefreshedArticles url:$url")
 
         return when (val response =
-            responseToResult<ArticleDataDto>(httpClient.get(url))) {
+            responseToResult<ArticleDataDto>(request = { httpClient.get(url) })) {
             is ResultHandler.Success -> {
                 val validResults = response.data.results?.filter { it.description != null }
                     ?: return ResultHandler.Error(ErrorResult.NetworkError.OTHER)
@@ -183,7 +185,16 @@ class ArticlesRepositoryKtorImpl(
         validArticles.clear()
     }
 
-    private suspend inline fun <reified T> responseToResult(response: HttpResponse): ResultHandler<T, ErrorResult> {
+    private suspend inline fun <reified T> responseToResult(request: () -> HttpResponse): ResultHandler<T, ErrorResult> {
+        // Catch error related to the request - before we can get response from the server
+        val response = try {
+            request()
+        } catch (e: UnresolvedAddressException) {
+            return ResultHandler.Error(ErrorResult.NetworkError.NO_INTERNET)
+        } catch (e: Exception) {
+            return ResultHandler.Error(ErrorResult.NetworkError.OTHER)
+        }
+        // Check errors returned from the server - after request was successful
         return when (response.status.value) {
             in 200..299 -> {
                 try {
