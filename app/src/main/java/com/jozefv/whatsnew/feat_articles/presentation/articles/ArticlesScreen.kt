@@ -243,6 +243,8 @@ private fun NewsScreen(
                 )
                 SpacerVerL()
                 CustomOutlinedButton(
+                    isLoading = state.isLoadingArticles,
+                    enabled = !state.isLoadingArticles,
                     text = stringResource(id = R.string.fetch_news_again),
                     onClick = {
                         onAction(ArticlesAction.OnRefresh)
