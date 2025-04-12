@@ -1,4 +1,4 @@
-package com.jozefv.whatsnew
+package com.jozefv.whatsnew.util
 
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.HttpClientEngineConfig
