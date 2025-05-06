@@ -75,7 +75,7 @@ fun ArticleList(
             mutableIntStateOf(1)
         }
         // Can be empty if there are no articles based on the selected filter
-        if(articles.isNotEmpty()) {
+        if (articles.isNotEmpty()) {
             LaunchedEffect(key1 = listState.canScrollForward, key2 = articles.size) {
                 // If we are at the bottom of the list try to load more data again
                 if (
@@ -135,7 +135,7 @@ fun ArticleList(
                                     .fillMaxSize(),
                                 verticalArrangement = Arrangement.spacedBy(16.dp)
                             ) {
-                                items(articles) { articleUi ->
+                                items(articles, key = { it.articleLink }) { articleUi ->
                                     ArticleCard(
                                         articleUi = articleUi,
                                         onClick = {
