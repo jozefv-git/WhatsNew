@@ -191,7 +191,8 @@ private fun ProfileScreen(
                     SpacerVerXS()
                     Text(
                         style = customStyle.InfoTextLessImportant,
-                        text = state.email)
+                        text = state.email
+                    )
                     SpacerVerM()
                     Text(
                         style = customStyle.DefaultText,
@@ -261,7 +262,9 @@ private fun ProfileScreen(
                                 state = lazyListState,
                                 verticalArrangement = Arrangement.spacedBy(16.dp)
                             ) {
-                                items(if (state.query.isBlank()) state.articles else state.filteredArticles) { articleLocalUi ->
+                                items(
+                                    if (state.query.isBlank()) state.articles else state.filteredArticles,
+                                    key = { it.articleLink }) { articleLocalUi ->
                                     ArticleCard(
                                         articleLocalUi = articleLocalUi,
                                         onClick = {
